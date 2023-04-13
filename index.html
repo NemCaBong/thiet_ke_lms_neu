@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		/>
+		<link rel="icon" href="./img/Logo-NEU.png" type="image/x-icon" />
+		<title>Trang chủ</title>
+		<style>
+			.box-info a {
+				color: black;
+			}
+			.box-info a:hover {
+				text-decoration: underline;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				list-style: 0;
+				outline: none;
+				font-family: "Inter", sans-serif;
+			}
+			.head-title,
+			.box-info,
+			.table-data {
+				padding-left: 36px;
+				padding-right: 36px;
+			}
+			.head-title {
+				padding-top: 24px;
+				padding-bottom: 24px;
+			}
+			a {
+				text-decoration: none;
+			}
+			li {
+				list-style: none;
+			}
+			:root {
+				--poppins: "Poppins", sans-serif;
+				--lato: "Lato", sans-serif;
+
+				--light: #f9f9f9;
+				--blue: #3c91e6;
+				--light-blue: #cfe8ff;
+				--grey: #eee;
+				--dark-grey: #aaaaaa;
+				--dark: #342e37;
+				--red: #db504a;
+				--yellow: #ffce26;
+				--light-yellow: #fff2c6;
+				--orange: #fd7238;
+				--light-orange: #ffe0d3;
+			}
+			html {
+				overflow-x: hidden;
+			}
+			body.dark {
+				--light: #0c0c1e;
+				--grey: #060714;
+				--dark: #fbfbfb;
+			}
+			body {
+				background: var(--grey);
+				overflow-x: hidden;
+			}
+			/* ====================SIDEBAR======================= */
+			#sidebar {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 280px;
+				height: 100%;
+				background: var(--light);
+				z-index: 2000;
+				font-family: "Inter", sans-serif;
+				transition: 0.3s ease;
+				overflow-x: hidden;
+				scrollbar-width: none;
+			}
+			img {
+				width: 100%;
+				height: auto;
+			}
+			#sidebar::-webkit-scrollbar {
+				display: none;
+			}
+			#sidebar.hide {
+				width: 60px;
+			}
+			#sidebar .brand {
+				font-size: 24px;
+				font-weight: 700;
+				height: 56px;
+				display: flex;
+				align-items: center;
+				color: var(--blue);
+				position: sticky;
+				top: 0;
+				left: 0;
+				padding-bottom: 20px;
+				background: var(--light);
+				z-index: 500;
+				box-sizing: content-box;
+			}
+			#sidebar .brand i {
+				font-size: 24px;
+			}
+			#sidebar .brand .bx {
+				min-width: 60px;
+				display: flex;
+				justify-content: center;
+			}
+			#sidebar .side-menu {
+				width: 100%;
+				margin-top: 20px;
+			}
+			#sidebar .side-menu li {
+				height: 48px;
+				background: transparent;
+				margin-left: 6px;
+				border-radius: 48px 0 0 48px;
+				padding: 4px;
+			}
+			#sidebar .side-menu li.active {
+				background: var(--grey);
+				position: relative;
+			}
+			#sidebar .side-menu li.active::before {
+				content: "";
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				top: -40px;
+				right: 0;
+				box-shadow: 20px 20px 0 var(--grey);
+				z-index: -1;
+			}
+			#sidebar .side-menu li.active::after {
+				content: "";
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				bottom: -40px;
+				right: 0;
+				box-shadow: 20px -20px 0 var(--grey);
+				z-index: -1;
+			}
+			#sidebar .side-menu li a {
+				width: 100%;
+				height: 100%;
+				background: var(--light);
+				display: flex;
+				align-items: center;
+				border-radius: 48px;
+				font-size: 16px;
+				color: var(--dark);
+				white-space: nowrap;
+				overflow-x: hidden;
+			}
+			#sidebar .side-menu.top li.active a {
+				color: var(--blue);
+			}
+			#sidebar.hide .side-menu li a {
+				width: calc(48px - (4px * 2));
+				transition: width 0.3s ease;
+			}
+			#sidebar .side-menu li a.logout {
+				color: var(--red);
+			}
+			#sidebar .side-menu.top li a:hover {
+				color: var(--blue);
+			}
+			#sidebar .side-menu li a .bx {
+				min-width: calc(60px - ((4px + 6px) * 2));
+				display: flex;
+				justify-content: center;
+			}
+
+			/* =====================================Nộidung======================================= */
+			#content {
+				position: relative;
+				width: calc(100% - 280px);
+				left: 280px;
+				transition: 0.3s ease;
+			}
+			#sidebar.hide ~ #content {
+				width: calc(100% - 60px);
+				left: 60px;
+			}
+			.s-question {
+				width: 6.8rem;
+				border-radius: 15px;
+				padding: 0.5rem;
+				border-color: #3c91e6;
+				-webkit-border-radius: 15px;
+				-moz-border-radius: 15px;
+				-ms-border-radius: 15px;
+				-o-border-radius: 15px;
+			}
+			/*==================================Header===========================*/
+			#content nav {
+				height: 56px;
+				background: var(--light);
+				padding: 0 24px;
+				display: flex;
+				align-items: center;
+				grid-gap: 24px;
+				font-family: var(--lato);
+				position: sticky;
+				top: 0;
+				left: 0;
+				z-index: 1000;
+			}
+			#content nav::before {
+				content: "";
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: -40px;
+				left: 0;
+				border-radius: 50%;
+				box-shadow: -20px -20px 0 var(--light);
+			}
+			#content nav a {
+				color: var(--dark);
+			}
+			#content nav .bx.bx-menu {
+				cursor: pointer;
+				color: var(--dark);
+			}
+			#content nav .nav-link {
+				font-size: 16px;
+				transition: 0.3s ease;
+			}
+			#content nav .nav-link:hover {
+				color: var(--blue);
+			}
+			#content nav form {
+				max-width: 400px;
+				width: 100%;
+				margin-right: auto;
+			}
+			#content nav form .form-input {
+				display: flex;
+				align-items: center;
+				height: 36px;
+			}
+			#content nav form .form-input input {
+				flex-grow: 1;
+				padding: 0 16px;
+				height: 100%;
+				border: none;
+				background: var(--grey);
+				border-radius: 36px 0 0 36px;
+				outline: none;
+				width: 100%;
+				color: var(--dark);
+			}
+			#content nav form .form-input button {
+				width: 35px;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: var(--blue);
+				color: var(--light);
+				font-size: 16px;
+				border: none;
+				outline: none;
+				border-radius: 0 36px 36px 0;
+				cursor: pointer;
+			}
+			#content nav .notification {
+				font-size: 20px;
+				position: relative;
+			}
+			#content nav .notification .num {
+				position: absolute;
+				top: -6px;
+				right: -6px;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				border: 2px solid var(--light);
+				background: var(--red);
+				color: var(--light);
+				font-weight: 700;
+				font-size: 16px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#content nav .profile img {
+				width: 36px;
+				height: 36px;
+				object-fit: cover;
+				border-radius: 50%;
+			}
+			/* ======================================MAIN================================== */
+			#content main {
+				width: 100%;
+				font-family: var(--poppins);
+				max-height: calc(100vh - 56px);
+				overflow: auto;
+			}
+			#content main .head-title {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				grid-gap: 16px;
+				flex-wrap: wrap;
+			}
+			#content main .head-title .left h1 {
+				font-size: 36px;
+				font-weight: 600;
+				margin-bottom: 10px;
+				color: #db3939;
+				text-align: left;
+			}
+			#content main .head-title .left .breadcrumb {
+				display: flex;
+				align-items: center;
+				grid-gap: 16px;
+			}
+			#content main .head-title .left .breadcrumb li {
+				color: var(--dark);
+			}
+			#content main .head-title .left .breadcrumb li a {
+				color: var(--dark-grey);
+				pointer-events: none;
+			}
+			#content main .head-title .left .breadcrumb li a.active {
+				color: var(--blue);
+				pointer-events: unset;
+			}
+			#content main .head-title .btn-download {
+				height: 36px;
+				padding: 0 16px;
+				border-radius: 36px;
+				background: var(--blue);
+				color: var(--light);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				grid-gap: 10px;
+				font-weight: 500;
+			}
+
+			#content main .box-info {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				grid-gap: 24px;
+				margin-top: 36px;
+			}
+			#content main .box-info li {
+				padding: 24px;
+				background: var(--light);
+				border-radius: 20px;
+				display: flex;
+				align-items: center;
+				grid-gap: 24px;
+			}
+			#content main .box-info li .bx {
+				width: 70px;
+				height: 80px;
+				border-radius: 20px;
+				font-size: 30px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+				-ms-border-radius: 20px;
+				-o-border-radius: 20px;
+			}
+			#content main .box-info li:nth-child(1) .bx {
+				background: var(--light-blue);
+				color: var(--blue);
+			}
+			#content main .box-info li:nth-child(2) .bx {
+				background: var(--light-yellow);
+				color: var(--yellow);
+			}
+			#content main .box-info li:nth-child(3) .bx {
+				background: var(--light-orange);
+				color: var(--orange);
+			}
+			#content main .box-info li:nth-child(4) .bx {
+				background: var(--light-orange);
+				color: var(--orange);
+			}
+			#content main .box-info li:nth-child(5) .bx {
+				background: var(--light-orange);
+				color: var(--orange);
+			}
+			#content main .box-info li .text h3 {
+				font-size: 20px;
+				font-weight: 600;
+				color: var(--dark);
+			}
+			#content main .box-info li .text p {
+				color: var(--dark);
+			}
+
+			#content main .table-data {
+				display: flex;
+				flex-wrap: wrap;
+				grid-gap: 24px;
+				margin-top: 24px;
+				width: 100%;
+				color: var(--dark);
+			}
+			#content main .table-data > div {
+				border-radius: 20px;
+				background: var(--light);
+				padding: 24px;
+				overflow-x: auto;
+			}
+			#content main .table-data .head {
+				display: flex;
+				align-items: center;
+				grid-gap: 16px;
+				margin-bottom: 24px;
+			}
+			#content main .table-data .head h3 {
+				margin-right: auto;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			#content main .table-data .head h3:hover {
+				text-decoration: underline;
+			}
+			#content main .table-data .head .bx {
+				cursor: pointer;
+			}
+
+			#content main .table-data .order {
+				flex-grow: 1;
+				flex-basis: 500px;
+			}
+			#content main .table-data .order table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			#content main .table-data .order table th {
+				padding-bottom: 12px;
+				font-size: 13px;
+				text-align: left;
+				border-bottom: 1px solid var(--grey);
+			}
+			#content main .table-data .order table td {
+				padding: 16px 0;
+			}
+			#content main .table-data .order table tr td:first-child {
+				display: flex;
+				align-items: center;
+				grid-gap: 12px;
+				padding-left: 6px;
+			}
+			#content main .table-data .order table td img {
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+			#content main .table-data .order table tbody tr:hover {
+				background: var(--grey);
+			}
+			#content main .table-data .order table tr td .status {
+				font-size: 10px;
+				padding: 6px 16px;
+				color: var(--light);
+				border-radius: 20px;
+				font-weight: 700;
+			}
+			#content main .table-data .order table tr td .status.completed {
+				background: var(--blue);
+			}
+			#content main .table-data .order table tr td .status.pending {
+				background: var(--orange);
+			}
+
+			#content main .table-data .todo {
+				flex-grow: 1;
+				flex-basis: 300px;
+			}
+			#content main .table-data .todo .todo-list {
+				width: 100%;
+			}
+			#content main .table-data .todo .todo-list li {
+				width: 100%;
+				margin-bottom: 16px;
+				background: var(--grey);
+				border-radius: 10px;
+				padding: 14px 24px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				-ms-border-radius: 10px;
+				-o-border-radius: 10px;
+			}
+			#content main .table-data .todo .todo-list li .bx {
+				cursor: pointer;
+			}
+			#content main .table-data .todo .todo-list li.completed {
+				border-left: 15px solid var(--blue);
+			}
+			#content main .table-data .todo .todo-list li.not-completed {
+				border-left: 15px solid var(--orange);
+			}
+			#content main .table-data .todo .todo-list li:last-child {
+				margin-bottom: 0;
+			}
+
+			@media screen and (max-width: 768px) {
+				#sidebar {
+					width: 200px;
+				}
+
+				#content {
+					width: calc(100% - 60px);
+					left: 200px;
+				}
+
+				#content nav .nav-link {
+					display: none;
+				}
+			}
+
+			@media screen and (max-width: 576px) {
+				#content nav form .form-input input {
+					display: none;
+				}
+				#content nav form .form-input button {
+					width: auto;
+					height: auto;
+					background: transparent;
+					border-radius: none;
+					color: var(--dark);
+				}
+
+				#content nav form.show .form-input input {
+					display: block;
+					width: 100%;
+				}
+				#content nav form.show .form-input button {
+					width: 36px;
+					height: 100%;
+					border-radius: 0 36px 36px 0;
+					color: var(--light);
+					background: var(--red);
+				}
+
+				#content nav form.show ~ .notification,
+				#content nav form.show ~ .profile {
+					display: none;
+				}
+				#content main .box-info {
+					grid-template-columns: 1fr;
+				}
+
+				#content main .table-data .head {
+					min-width: 420px;
+				}
+				#content main .table-data .order table {
+					min-width: 420px;
+				}
+				#content main .table-data .todo .todo-list {
+					min-width: 420px;
+				}
+			}
+
+			/*-----------------select ava--------------------*/
+
+			.nav_right > ul {
+				display: flex;
+				align-items: center;
+			}
+
+			.nav_right ul li.nr_li {
+				cursor: pointer;
+				color: #fff;
+				font-size: 20px;
+				position: relative;
+			}
+
+			.nav_right ul li.nr_li:hover {
+				color: #cefffc;
+			}
+
+			.nav_right ul li img {
+				width: 35px;
+				vertical-align: middle;
+			}
+
+			.dd_menu {
+				position: absolute;
+				right: -25px;
+				top: 47px;
+				display: flex;
+				background: #fff;
+				border-radius: 15px;
+				box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+				display: none;
+				font-size: 15px;
+				padding-left: 0.75rem;
+				padding-right: 0.75rem;
+				padding-top: 1rem;
+				padding-bottom: 1rem;
+				width: 6rem;
+			}
+
+			.dd_menu li {
+				margin-bottom: 10px;
+				color: #868686;
+			}
+
+			.dd_menu:before {
+				content: "";
+				position: absolute;
+				top: -20px;
+				right: 30px;
+				border: 10px solid;
+				border-color: transparent transparent #fff transparent;
+			}
+
+			.dd_main.active .dd_menu {
+				display: flex;
+			}
+
+			.container1 {
+				max-width: 1170px;
+				margin: auto;
+			}
+			.row {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			@media (max-width: 574px) {
+				.footer-col {
+					width: 100% !important;
+				}
+			}
+			@media (max-width: 860px) {
+				.footer-col {
+					width: 50% !important;
+					margin-bottom: 30px;
+				}
+			}
+			.form {
+				position: relative;
+				width: 15rem;
+				height: 3rem;
+			}
+			.form--input {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				border: 2px solid black;
+				border-radius: 0.5rem;
+				font-size: 1rem;
+				color: black;
+				outline: none;
+				padding: 0.5rem;
+				background: none;
+			}
+			.form--input:hover {
+				border-color: #b6b6b6;
+			}
+			.form--input:focus {
+				border-color: black;
+			}
+			.form-label {
+				position: absolute;
+				left: 1.5rem;
+				top: 0.8rem;
+				padding: 0;
+				color: black;
+				cursor: text;
+				transition: 250ms cubic-bezier(0.79, 0, 0.16, 0.99);
+				background-color: white;
+			}
+			.form--input:focus ~ .form-label,
+			.form--input:not(:placeholder-shown).form--input:not(:focus)
+				~ .form-label {
+				top: -0.5rem;
+				font-size: 0.8rem;
+				left: 0.8rem;
+				padding: 0 0.5rem;
+				color: black;
+			}
+			.footer {
+				background-color: #f9f9f9;
+				padding: 50px 0;
+			}
+			.footer-col {
+				width: 33%;
+				padding: 0 15px;
+			}
+			.footer-col h4 {
+				font-size: 18px;
+				color: #000000;
+				text-transform: capitalize;
+				margin-bottom: 35px;
+				font-weight: 500;
+				position: relative;
+			}
+			.footer-col h4::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -10px;
+				background-color: #e91e63;
+				height: 2px;
+				box-sizing: border-box;
+				width: 100px;
+			}
+			.footer-col ul li:not(:last-child) {
+				margin-bottom: 10px;
+			}
+			.footer-col ul li a {
+				font-size: 16px;
+
+				color: #000000;
+				text-decoration: none;
+				font-weight: 300;
+				color: #000000;
+				display: block;
+				transition: all 0.3s ease;
+			}
+			.footer-col ul li a:hover {
+				color: #ff0000;
+				padding-left: 8px;
+			}
+			.footer-col .social-links a {
+				display: inline-block;
+				height: 40px;
+				width: 40px;
+				background-color: rgba(50, 46, 46, 0.2);
+				margin: 0 10px 10px 0;
+				text-align: center;
+				line-height: 40px;
+				border-radius: 50%;
+				color: #000000;
+				transition: all 0.5s ease;
+			}
+			.footer-col .social-links a:hover {
+				color: #da1313;
+				background-color: #f1e9e9;
+			}
+
+			.footer-col h2 {
+				font-size: 15px;
+				color: #000000;
+				text-transform: capitalize;
+				margin-bottom: 10px;
+				font-weight: 500;
+				position: relative;
+			}
+			footer {
+				margin-top: 3rem;
+			}
+
+			.month {
+				padding: 30px 25px;
+				width: 100%;
+				background: #3c91e6;
+				text-align: center;
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+			}
+
+			.month ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			.month ul li {
+				color: white;
+				font-size: 20px;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+			}
+
+			.month .prev {
+				float: left;
+				padding-top: 10px;
+			}
+
+			.month .next {
+				float: right;
+				padding-top: 10px;
+			}
+
+			.weekdays {
+				margin: 0;
+				padding: 10px 0;
+				background-color: #ddd;
+			}
+
+			.weekdays li {
+				display: inline-block;
+				width: 13.6%;
+				color: #666;
+				text-align: center;
+			}
+
+			.days {
+				padding: 20px 0;
+				background: #eee;
+				margin: 0;
+				border-bottom-left-radius: 20px;
+				border-bottom-right-radius: 20px;
+			}
+
+			.days li {
+				list-style-type: none;
+				display: inline-block;
+				width: 13.6%;
+				text-align: center;
+				margin-bottom: 5px;
+				font-size: 14px;
+				color: #777;
+			}
+
+			.days li .active {
+				padding: 5px;
+				background: #fd7238;
+				color: white !important;
+			}
+
+			/* Add media queries for smaller screens */
+			@media screen and (max-width: 720px) {
+				.weekdays li,
+				.days li {
+					width: 13.1%;
+				}
+			}
+
+			@media screen and (max-width: 420px) {
+				.weekdays li,
+				.days li {
+					width: 12.5%;
+				}
+				.days li .active {
+					padding: 2px;
+				}
+			}
+
+			@media screen and (max-width: 290px) {
+				.weekdays li,
+				.days li {
+					width: 12.2%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!------------------------------------------- SIDEBAR ------------------------------------------------>
+		<section id="sidebar">
+			<a href="./index.html" class="brand">
+				<i class="bx bx-book-reader"></i>
+				<span class="text">LMS</span>
+			</a>
+			<ul class="side-menu top">
+				<li class="active">
+					<a href="./index.html">
+						<i class="bx bxs-dashboard"></i>
+						<span class="text">Trang chủ</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bxs-group"></i>
+						<span class="text">Hồ sơ cá nhân</span>
+					</a>
+				</li>
+				<li>
+					<a href="./index.html">
+						<i class="bx bxs-file"></i>
+						<span class="text">Tập tin riêng tư</span>
+					</a>
+				</li>
+				<li>
+					<a href="./diemso.html">
+						<i class="bx bxs-message-dots"></i>
+						<span class="text">Điểm số</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bxs-graduation"></i>
+						<span class="text">Các khóa học</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="./tkw.html">
+						<i class="bx bx-move-horizontal"></i>
+						<span class="text">Thiết Kế Web</span>
+					</a>
+				</li>
+				<li>
+					<a href="./ktmt.html">
+						<i class="bx bx-move-horizontal"></i>
+						<span class="text">Kiến trúc máy tính</span>
+					</a>
+				</li>
+				<li>
+					<a href="./hdh.html">
+						<i class="bx bx-move-horizontal"></i>
+						<span class="text">Hệ điều hành</span>
+					</a>
+				</li>
+				<li>
+					<a href="./cslt.html">
+						<i class="bx bx-move-horizontal"></i>
+						<span class="text">Cơ sở lập trình</span>
+					</a>
+				</li>
+				<li>
+					<a href="./ta.html">
+						<i class="bx bx-move-horizontal"></i>
+						<span class="text">Tiếng Anh</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="side-menu">
+				<li>
+					<a href="#">
+						<i class="bx bxs-cog"></i>
+						<span class="text">Cài đặt</span>
+					</a>
+				</li>
+				<li>
+					<a href="./dang-nhap.html" class="logout">
+						<i class="bx bxs-left-arrow-circle"></i>
+						<span class="text">Đăng xuất</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!---------------------------------Nội Dung ------------------------------>
+		<section id="content">
+			<!----------------------- Header ----------------------->
+			<nav>
+				<i class="bx bx-menu"></i>
+				<a href="#" class="nav-link">Danh mục</a>
+				<form action="#">
+					<div class="form-input">
+						<input type="search" placeholder="Search..." />
+						<button type="submit" class="search-btn">
+							<i class="bx bx-search"></i>
+						</button>
+					</div>
+				</form>
+				<select class="s-question">
+					<option>Tiếng Việt</option>
+					<option>English</option>
+				</select>
+				<a href="#" class="notification">
+					<i class="bx bxs-bell"></i>
+					<span class="num">8</span>
+					<a href="">Nghĩa Linh</a>
+				</a>
+				<a href="#" class="profile">
+					<div class="nav_right">
+						<ul>
+							<li class="nr_li dd_main">
+								<img src="img/people.png" alt="profile_img" />
+
+								<div class="dd_menu">
+									<ul>
+										<li>
+											<a href="./index.html">Trang chủ</a>
+										</li>
+										<li>
+											<a href="./diemso.html">Điểm số</a>
+										</li>
+										<li>
+											<a href="./dang-nhap.html"
+												>Đăng xuất</a
+											>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</a>
+			</nav>
+
+			<!----------------------------------------------main-------------------------------->
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Trang chủ</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#" class="btn-download">
+						<i class="bx bxs-cloud-download"></i>
+						<span class="text">Download PDF</span>
+					</a>
+				</div>
+				<!-----------------Head-Box-------------->
+				<ul class="box-info">
+					<li>
+						<i class="bx bx-bookmark-alt"></i>
+						<span class="text">
+							<h3><a href="./tkw.html">Thiết kế web</a></h3>
+							<p>10 bài học</p>
+						</span>
+					</li>
+					<li>
+						<i class="bx bx-bookmark-alt"></i>
+						<span class="text">
+							<h3><a href="./hdh.html">Hệ điều hành</a></h3>
+							<p>10 bài học</p>
+						</span>
+					</li>
+					<li>
+						<i class="bx bx-bookmark-alt"></i>
+						<span class="text">
+							<h3>
+								<a href="./ktmt.html">Kiến trúc máy tính</a>
+							</h3>
+							<p>10 bài học</p>
+						</span>
+					</li>
+					<li>
+						<i class="bx bx-bookmark-alt"></i>
+						<span class="text">
+							<h3><a href="./ta.html">Tiếng Anh</a></h3>
+							<p>10 bài học</p>
+						</span>
+					</li>
+				</ul>
+
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Danh sách Môn</h3>
+							<i class="bx bx-search"></i>
+							<i class="bx bx-filter"></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Môn học</th>
+									<th>Ngày tháng</th>
+									<th>Chú thích</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Thiết Kế Web</p>
+									</td>
+									<td>01-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa hoàn thành</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Hệ Điều Hành</p>
+									</td>
+									<td>02-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa hoàn thành</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Tiếng Anh</p>
+									</td>
+									<td>03-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa hoàn thành</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Kiến Trúc Máy Tính</p>
+									</td>
+									<td>04-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa hoàn thành</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Cơ Sở Lập Trình</p>
+									</td>
+									<td>05-10-2022</td>
+									<td>
+										<span class="status pending"
+											>Chưa hoàn thành</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Phương Pháp Tính</p>
+									</td>
+									<td>06-10-2022</td>
+									<td>
+										<span class="status completed"
+											>Hoàn thành</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-book-open"></i>
+										<p>Triết học Mác-Lênin</p>
+									</td>
+									<td>07-10-2022</td>
+									<td>
+										<span class="status completed"
+											>Hoàn thành</span
+										>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!----------------TTTCGN--------------->
+					<div class="todo">
+						<div class="head">
+							<h3>Tập tin truy cập gần nhất</h3>
+							<i class="bx bx-plus"></i>
+							<i class="bx bx-filter"></i>
+						</div>
+						<ul class="todo-list">
+							<li class="not-completed">
+								<p>Hệ thống lưu trữ</p>
+								<i class="bx bxs-file-export"></i>
+							</li>
+							<li class="not-completed">
+								<p>Giới thiệu về hệ điều hành</p>
+								<i class="bx bxs-file-export"></i>
+							</li>
+							<li class="not-completed">
+								<p>Hệ thống Files</p>
+								<i class="bx bxs-file-export"></i>
+							</li>
+							<li class="not-completed">
+								<p>Cơ bản về lập trình C++</p>
+								<i class="bx bxs-file-export"></i>
+							</li>
+							<li class="not-completed">
+								<p>HTML Phần 1</p>
+								<i class="bx bxs-file-export"></i>
+							</li>
+							<li class="not-completed">
+								<p>CSS Phần 1</p>
+								<i class="bx bxs-file-export"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!--------------------------------------------------------------------------->
+
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Timeline</h3>
+							<i class="bx bx-time"></i>
+							<i class="bx bx-filter"></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Tên bài</th>
+									<th>Hạn</th>
+									<th>Trạng thái</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<i class="bx bx-timer"></i>
+										<p>Xây dựng WBS</p>
+									</td>
+									<td>01-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa nộp</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-timer"></i>
+										<p>Thiết kế web figma</p>
+									</td>
+									<td>02-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa nộp</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-timer"></i>
+										<p>Bài tập hệ điều hành</p>
+									</td>
+									<td>03-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa nộp</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-timer"></i>
+										<p>Vẽ biểu đồ</p>
+									</td>
+									<td>04-10-2023</td>
+									<td>
+										<span class="status pending"
+											>Chưa nộp</span
+										>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="bx bx-timer"></i>
+										<p>Kiểm tra giữa kì</p>
+									</td>
+									<td>05-10-2022</td>
+									<td>
+										<span class="status pending"
+											>Chưa nộp</span
+										>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="todo">
+						<div class="month">
+							<ul>
+								<li class="prev">&#10094;</li>
+								<li class="next">&#10095;</li>
+								<li>
+									March<br />
+									<span style="font-size: 18px">2023</span>
+								</li>
+							</ul>
+						</div>
+
+						<ul class="weekdays">
+							<li>Mo</li>
+							<li>Tu</li>
+							<li>We</li>
+							<li>Th</li>
+							<li>Fr</li>
+							<li>Sa</li>
+							<li>Su</li>
+						</ul>
+
+						<ul class="days">
+							<li>1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+							<li><span class="active">10</span></li>
+							<li>11</li>
+							<li>12</li>
+							<li>13</li>
+							<li>14</li>
+							<li>15</li>
+							<li>16</li>
+							<li>17</li>
+							<li>18</li>
+							<li>19</li>
+							<li>20</li>
+							<li>21</li>
+							<li>22</li>
+							<li>23</li>
+							<li>24</li>
+							<li>25</li>
+							<li>26</li>
+							<li>27</li>
+							<li>28</li>
+							<li>29</li>
+							<li>30</li>
+							<li>31</li>
+						</ul>
+					</div>
+				</div>
+
+				<!----------------Lich---------->
+
+				<footer class="footer">
+					<div class="container1">
+						<div class="row">
+							<div class="footer-col">
+								<h4>Information</h4>
+								<ul>
+									<li>
+										<a href="#">Cổng thông tin đào tạo</a>
+									</li>
+									<li>
+										<a href="#"
+											>daihocchinhquy.neu.edu.vn</a
+										>
+									</li>
+									<li><a href="#">vlvh.neu.edu.vn</a></li>
+									<li><a href="#">thacsi.neu.vn</a></li>
+								</ul>
+							</div>
+							<div class="footer-col">
+								<h4>Contact us</h4>
+								<ul>
+									<li>
+										<a
+											href="https://www.google.com/maps?q=207 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội, Vietnam"
+											target="_blank"
+											><i class="fa fa-location-arrow">
+											</i>
+											207 Giải Phóng, Hai Bà Trưng, Hà Nội
+										</a>
+									</li>
+									<li>
+										<a
+											href="mailto:ask-cait.neu.edu.vn?subject=Thông tin liên hệ&body=Xin chào,%0D%0A%0D%0A Tôi muốn liên hệ để biết thêm thông tin"
+											><i class="fa fa-envelope"> </i>
+											ask-cait.neu.edu.vn</a
+										>
+									</li>
+								</ul>
+							</div>
+
+							<div class="footer-col">
+								<h4>follow us</h4>
+								<div class="social-links">
+									<a href="#"
+										><i class="fab fa-facebook-f"></i
+									></a>
+									<a href="#"
+										><i class="fab fa-twitter"></i
+									></a>
+									<a href="#"
+										><i class="fab fa-instagram"></i
+									></a>
+									<a href="#"
+										><i class="fab fa-google"></i
+									></a>
+								</div>
+
+								<h2>Subcribe for lattest notifications</h2>
+								<div class="form">
+									<input
+										type="text"
+										id="email"
+										class="form--input"
+										autocomplete="off"
+										placeholder=" "
+									/>
+									<label for="email" class="form-label"
+										>Email</label
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</main>
+		</section>
+
+		<script>
+			const allSideMenu = document.querySelectorAll(
+				"#sidebar .side-menu.top li a"
+			);
+
+			allSideMenu.forEach((item) => {
+				const li = item.parentElement;
+
+				item.addEventListener("click", function () {
+					allSideMenu.forEach((i) => {
+						i.parentElement.classList.remove("active");
+					});
+					li.classList.add("active");
+				});
+			});
+			// TOGGLE SIDEBAR
+			const menuBar = document.querySelector("#content nav .bx.bx-menu");
+			const sidebar = document.getElementById("sidebar");
+
+			menuBar.addEventListener("click", function () {
+				sidebar.classList.toggle("hide");
+			});
+			const searchButton = document.querySelector(
+				"#content nav form .form-input button"
+			);
+			const searchButtonIcon = document.querySelector(
+				"#content nav form .form-input button .bx"
+			);
+			const searchForm = document.querySelector("#content nav form");
+
+			searchButton.addEventListener("click", function (e) {
+				if (window.innerWidth < 576) {
+					e.preventDefault();
+					searchForm.classList.toggle("show");
+					if (searchForm.classList.contains("show")) {
+						searchButtonIcon.classList.replace("bx-search", "bx-x");
+					} else {
+						searchButtonIcon.classList.replace("bx-x", "bx-search");
+					}
+				}
+			});
+			if (window.innerWidth < 768) {
+				sidebar.classList.add("hide");
+			} else if (window.innerWidth > 576) {
+				searchButtonIcon.classList.replace("bx-x", "bx-search");
+				searchForm.classList.remove("show");
+			}
+
+			window.addEventListener("resize", function () {
+				if (this.innerWidth > 576) {
+					searchButtonIcon.classList.replace("bx-x", "bx-search");
+					searchForm.classList.remove("show");
+				}
+			});
+			var dd_main = document.querySelector(".dd_main");
+
+			dd_main.addEventListener("click", function () {
+				this.classList.toggle("active");
+			});
+		</script>
+		<script src="./js/firebase.js"></script>
+	</body>
+</html>

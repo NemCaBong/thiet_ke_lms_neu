@@ -1,0 +1,52 @@
+[debug] [2023-04-12T08:51:19.979Z] ----------------------------------------------------------------------
+[debug] [2023-04-12T08:51:19.981Z] Command:       D:\NodeJs\node.exe C:\Users\ADMIN\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-04-12T08:51:19.982Z] CLI Version:   11.25.3
+[debug] [2023-04-12T08:51:19.982Z] Platform:      win32
+[debug] [2023-04-12T08:51:19.982Z] Node Version:  v18.15.0
+[debug] [2023-04-12T08:51:19.983Z] Time:          Wed Apr 12 2023 15:51:19 GMT+0700 (Indochina Time)
+[debug] [2023-04-12T08:51:19.983Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-12T08:51:19.996Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-04-12T08:51:20.157Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-12T08:51:20.158Z] > authorizing via signed-in user (nemcabong@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\ADMIN\OneDrive - National Economics University\Desktop\firebase-lms
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[debug] [2023-04-12T08:51:20.656Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-04-12T08:51:20.657Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-04-12T08:51:32.430Z] Using project from CLI flag: fir-lms-51b32
+[debug] [2023-04-12T08:51:32.430Z] > refreshing access token with scopes: []
+[debug] [2023-04-12T08:51:32.431Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-12T08:51:32.432Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-12T08:51:32.725Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-04-12T08:51:32.725Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-12T08:51:32.742Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fir-lms-51b32 [none]
+[debug] [2023-04-12T08:51:33.241Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fir-lms-51b32 200
+[debug] [2023-04-12T08:51:33.241Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fir-lms-51b32 {"projectId":"fir-lms-51b32","projectNumber":"319460554517","displayName":"firebase-lms","name":"projects/fir-lms-51b32","resources":{"hostingSite":"fir-lms-51b32"},"state":"ACTIVE","etag":"1_13b34815-8dc0-4066-ab30-8936b70da354"}
+[info] i  Using project fir-lms-51b32 (firebase-lms) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
